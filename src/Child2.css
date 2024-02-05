@@ -1,0 +1,117 @@
+.custom_btn {
+    font-size: 2rem;
+    }
+
+.R_btn {
+    margin-right: 15px;
+}
+
+  .dp_box button {
+    width: 150px;
+    height: 30px;
+  }
+  
+  .dp_box button p {
+    font-size: 2rem;
+  }
+
+  .color_name {
+    min-width: 150px;
+    text-align: right;
+    margin-right: 10px;
+  }
+
+  .color_palette {
+    display: flex;
+  }
+
+  .color_palette img {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    margin-left: 10px;
+  }
+
+  .color_palette button {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+  }
+
+  .select_box {
+    display: flex;
+    align-items: center;
+    width: 600px;
+    height: 45px;
+    justify-content: space-evenly;
+    margin-top: 15px;
+  }
+
+  .bg {
+    width: 100%;
+    height: 475px;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+
+.trim_select_box button {
+  width: 380px;
+  height: 40px;
+  margin-bottom: 15px;
+  font-weight: 900;
+  border: none;
+  font-size: 1.5rem;
+  background: #fff;
+  border-bottom: 2px solid #ccc;
+}
+
+.trim_select_box button:hover{
+  cursor: pointer;
+}
+
+.trim_list {
+  list-style: none;
+  padding: 0;
+  /* display: none; */
+  position: absolute;
+  top: 735px;
+  z-index: 99;
+}
+
+.trim_list button {
+  width: 250px;
+  height: 40px;
+  font-weight: 900;
+  text-align: left;
+  padding-left: 25px;
+}
+
+.showTime {
+  width: 100%;
+  height: 685px;
+  position: absolute;
+  top: 0;
+}
+
+.showTime:hover {
+  cursor: pointer;
+}
+
+.select_box + p {
+  font-size: 0.8rem;
+  margin-top: 20px;
+}
+
+.selected::after {
+  content: '\2713'; /* 체크 마크 유니코드 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: green; /* 체크 마크 색상 */
+}
