@@ -108,10 +108,15 @@
   margin-top: 20px;
 }
 
-.selected::after {
-  content: '\2713'; /* 체크 마크 유니코드 */
+/* .selected::after {
+  content: '\2713';
+  font-size: 2rem;
   position: absolute;
-  top: 0;
-  right: 0;
-  color: green; /* 체크 마크 색상 */
+  top: -7%;
+  left: 47%;
+  color: #fff;
+} */
+
+.pal {
+  position: relative;
 }

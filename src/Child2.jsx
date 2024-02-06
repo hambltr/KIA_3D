@@ -6,63 +6,63 @@ function Child2({ changeImage }) {
   const [count, setCount] = useState(1);
   //차량 Trim (옵션) 조작
   const [trim] = useState([    
-    { id: 1, URLname: 'air', name: 'EV 전기차 에어 2WD A/T 7인승'  },
-    { id: 2, URLname: 'earth', name: 'EV 전기차 어스 2WD A/T 7인승' },
-    { id: 3, URLname: 'gt-line', name: 'EV 전기차 GT-line 4WD A/T 7인승' }
+    { id: 0, URLname: 'air', name: 'EV 전기차 에어 2WD A/T 7인승'  },
+    { id: 1, URLname: 'earth', name: 'EV 전기차 어스 2WD A/T 7인승' },
+    { id: 2, URLname: 'gt-line', name: 'EV 전기차 GT-line 4WD A/T 7인승' }
   ]);
 
   //서버에서 받아온 차량 정보라고 가정하고 state 값을 지정하고 작업하였습니다.
   const [color] = useState([
   {
-    id: 1, 
+    id: 0, 
     urlColor: 'swp', 
     name: '스노우 화이트 펄', 
     backgroundColor: '#C9C9CB' 
   },
   { 
-    id: 2, 
+    id: 1, 
     urlColor: 'ism', 
     name: '아이보리 매트 실버', 
     backgroundColor: '#b1b1ac' 
   },
   { 
-    id: 3, 
+    id: 2, 
     urlColor: 'dfg', 
     name: '페블 그레이', 
     backgroundColor: '#85848a' 
   },
   { 
-    id: 4, 
+    id: 3, 
     urlColor: 'ieg', 
     name: '아이스버그 그린', 
     backgroundColor: '#727e7c' 
   },
   { 
-    id: 5, 
+    id: 4, 
     urlColor: 'p2m', 
     name: '판테라 메탈', 
     backgroundColor: '#363a40' 
   },
   { 
-    id: 6, 
+    id: 5, 
     urlColor: 'abp', 
     name: '오로라 블랙 펄', 
     backgroundColor: '#000000' 
   },
   { 
-    id: 7, 
+    id: 6, 
     urlColor: 'obg', 
     name: '오션 블루', 
     backgroundColor: '#0c456c' 
   },
   { 
-    id: 8, 
+    id: 7, 
     urlColor: 'obm', 
     name: '오션 매트 블루', 
     backgroundColor: '#004e75' 
   },
   { 
-    id: 9, 
+    id: 8, 
     urlColor: 'c7r', 
     name: '플레어 레드', 
     backgroundColor: '#75111d' 
@@ -73,6 +73,7 @@ function Child2({ changeImage }) {
   const [selectedColorName, setSelectedColorName] = useState(color[0].name);
   const [selectedColorURL, setSelectedColorURL] = useState(color[0].urlColor);
   const [selectedBackgroundColor, setSelectedBackgroundColor] = useState(color[0].backgroundColor);
+  const [clicked, setClicked] = useState(0);
 
   //버튼에서 선택한 옵션 정보(trim)
   const [selectedTrimList, setSelectedTrimList] = useState(false);
@@ -102,10 +103,11 @@ function Child2({ changeImage }) {
   //   setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 72));
   // };
 
-  const btnChangeColor = (colorName, colorURL, colorBg) => {
+  const btnChangeColor = (colorName, colorURL, colorBg, colorID) => {
     setSelectedColorName(colorName);
     setSelectedColorURL(colorURL);
     setSelectedBackgroundColor(colorBg);
+    setClicked(colorID);
   };
 
   const showUlBox = () => {
@@ -155,7 +157,6 @@ const handleMouseUp = () => {
 };
 
 
-
   return (
     <>
       <div className="showTime"   
@@ -200,9 +201,25 @@ const handleMouseUp = () => {
             color.map((a,i)=>{
               const colorCode = color[i].urlColor
               const buttonImg = `https://www.kia.com/content/dam/kwp/kr/ko/configurator/ev9/colorchip/exterior/${colorCode}.png`
+              //선택한게 color 배열의 id값과 일치하는지 검사
+              const isSelected = color[i].id === clicked; 
+              //조건부 css : 하얀배경에 하얀체크는 가시성이 떨어지므로, 까만색으로 바꾸는 로직
+              const selectedAfterStyle = {
+                content: '"\\2713"',
+                fontSize: '2rem',
+                position: 'absolute',
+                top: '-7%',
+                left: '47%',
+                color: selectedColorURL === 'swp' || 
+                selectedColorURL === 'ism' || 
+                selectedColorURL === 'dfg' ||
+                selectedColorURL === 'ieg' ? '#000' : '#fff', // 조건부 색상 적용
+              };
               return (
-                <button key={i} onClick={() => btnChangeColor(color[i].name, color[i].urlColor, color[i].backgroundColor)}>
+                <button key={i} className={isSelected ? "selected pal" : "pal"}
+                onClick={() => btnChangeColor(color[i].name, color[i].urlColor, color[i].backgroundColor, color[i].id)}>
                   <img src={buttonImg} alt="button_colors"/>
+                  {isSelected && <span style={selectedAfterStyle}>✓</span>}
                 </button>
               );
             })
