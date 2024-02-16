@@ -14,5 +14,3 @@ URL에 데이터바인딩 된 변수가 변경될 경우, 새로운 이미지 UR
 해당 페이지는 PC버전을 기준으로 개발되었습니다. 감사합니다.<br>
 
 #https://www.kia.com/kr/vehicles/ev9/features
-
-#https://hambltr.github.io
