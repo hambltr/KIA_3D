@@ -134,15 +134,21 @@ const handleMouseMove = (event) => {
   if (dragging) {
     // 이동한 거리 계산
     const movedX = event.clientX - startX;
+    // 드래그 반응을 완화시키기 위한 비율 설정
+
+    const sensitivity = 0.03; // 이동 거리의 반응을 조절할 비율
+
+    // 이동한 거리에 비율을 적용하여 실제 이동할 거리 계산
+    const adjustedMovedX = movedX * sensitivity;
 
     // 1 이상 오른쪽으로 이동한 경우 url의 숫자를 감소시킴
-    if (movedX > 1) {
+    if (adjustedMovedX > 1) {
       setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 72));
       // startX를 현재 위치로 업데이트하여 다음 이동 거리를 계산할 때 사용
       setStartX(event.clientX);
     }
     // 1 이상 왼쪽으로 이동한 경우 url 숫자를 증가시킴
-    else if (movedX < -1) {
+    else if (adjustedMovedX < -1) {
       setCount((prevCount) => (prevCount < 72 ? prevCount + 1 : 1));
       // startX를 현재 위치로 업데이트하여 다음 이동 거리를 계산할 때 사용
       setStartX(event.clientX);
