@@ -15,4 +15,6 @@ changeImage 함수를 선언하여 부모 컴포넌트로 데이터를 전송하
 모델링 연출은 인터넷 연결 상황에 따라, 끊김이 발생할 수 있습니다.<br>
 해당 페이지는 PC버전을 기준으로 개발되었습니다. 감사합니다.<br>
 
-#https://www.kia.com/kr/vehicles/ev9/features
+고민의 흔적: https://www.notion.so/2D-3D-1e405645b1d04aa3b4c5191fcef06229?pvs=4 <br>
+레퍼런스 페이지: https://www.kia.com/kr/vehicles/ev9/features <br>
+
